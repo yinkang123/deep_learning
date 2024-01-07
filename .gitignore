@@ -1,0 +1,5 @@
+# .gitignore 文件内容
+dataset/CIFAR10/
+dataset/MNIST/
+logs/
+model_weights/
