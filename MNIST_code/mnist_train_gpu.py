@@ -5,7 +5,6 @@ import torchvision
 import torchvision.transforms as transforms
 import matplotlib.pyplot as plt
 import os
-import cv2
 
 # 检查是否有可用的 GPU，如果有的话，使用 GPU
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")

@@ -5,7 +5,6 @@ import torchvision
 import torchvision.transforms as transforms
 import matplotlib.pyplot as plt
 import os
-import cv2
 
 torch.manual_seed(1)  # 使用随机化种子使神经网络的初始化每次都相同
 
