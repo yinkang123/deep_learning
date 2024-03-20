@@ -1,9 +1,14 @@
+import torch
 import torchvision
 from torch import nn
 from torch.nn import Sequential, Conv2d, MaxPool2d, Flatten, Linear
+from torch.optim.lr_scheduler import StepLR
 from torch.utils.data import DataLoader
+import sys
+sys.path.append("../")
+from configs import CIFAR10_path
 
-dataset = torchvision.datasets.CIFAR10("../dataset/CIFAR10", train=False, transform=torchvision.transforms.ToTensor(),
+dataset = torchvision.datasets.CIFAR10(CIFAR10_path, train=False, transform=torchvision.transforms.ToTensor(),
                                        download=True)
 
 dataloader = DataLoader(dataset, batch_size=1)
@@ -30,8 +35,18 @@ class YinKang(nn.Module):
 
 loss = nn.CrossEntropyLoss()
 yinkang = YinKang()
-for data in dataloader:
-    imgs, targets = data
-    outputs = yinkang(imgs)
-    result_loss = loss(outputs, targets)
-    print(result_loss)
+#优化器，SGD,Adam
+optim = torch.optim.SGD(yinkang.parameters(), lr=0.01)
+#scheduler = StepLR(optim, step_size=5, gamma=0.1)
+for epoch in range(20):
+    running_loss = 0.0
+    for data in dataloader:
+        imgs, targets = data
+        outputs = yinkang(imgs)
+        result_loss = loss(outputs, targets)
+        optim.zero_grad()
+        result_loss.backward()
+        optim.step()
+        #scheduler.step()
+        running_loss = running_loss + result_loss
+    print(running_loss)

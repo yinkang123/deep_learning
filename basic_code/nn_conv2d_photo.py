@@ -4,9 +4,12 @@ from torch import nn
 from torch.nn import Conv2d
 from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
+import sys
+sys.path.append("../")
+from configs import CIFAR10_path
 
-dataset = torchvision.datasets.CIFAR10("../dataset/CIFAR10", train=False, 
-                                       transform=torchvision.transforms.ToTensor(),download=True)
+dataset = torchvision.datasets.CIFAR10(CIFAR10_path, train=False, 
+                                       transform=torchvision.transforms.ToTensor(),download=False)
 dataloader = DataLoader(dataset, batch_size=64)
 
 class YinKang(nn.Module):

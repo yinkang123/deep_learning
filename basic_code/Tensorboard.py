@@ -3,7 +3,7 @@ import numpy as np
 from PIL import Image
 
 writer = SummaryWriter("../logs/tensorboard")
-image_path = "../dataset/DataSet/train/ants_image/6240329_72c01e663e.jpg"
+image_path = "../dataset/train/ants_image/6240329_72c01e663e.jpg"
 img_PIL = Image.open(image_path)
 img_array = np.array(img_PIL)
 print(type(img_PIL))

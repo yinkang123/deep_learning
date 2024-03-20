@@ -3,8 +3,11 @@ import torchvision
 # 准备的测试数据集
 from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
+import sys
+sys.path.append("../")
+from configs import CIFAR10_path
 
-test_data = torchvision.datasets.CIFAR10("../dataset/CIFAR10", train=False, transform=torchvision.transforms.ToTensor())
+test_data = torchvision.datasets.CIFAR10(CIFAR10_path, train=False, transform=torchvision.transforms.ToTensor())
 #test_data中batch_size个捆绑在一起
 test_loader = DataLoader(dataset=test_data, batch_size=64, shuffle=True, num_workers=0, drop_last=False)
 

@@ -1,11 +1,15 @@
 import torchvision
 from torch.utils.tensorboard import SummaryWriter
+import sys
+sys.path.append("../")
+from configs import CIFAR10_path
+
 
 dataset_transform = torchvision.transforms.Compose([
     torchvision.transforms.ToTensor()
 ])
 #可以将transform运用到dataset中每一个图片上
-test_set = torchvision.datasets.CIFAR10(root="../dataset/CIFAR10", train=False, transform=dataset_transform, download=True)
+test_set = torchvision.datasets.CIFAR10(root=CIFAR10_path, train=False, transform=dataset_transform, download=False)
 
 print(test_set[0])
 #图像有十种分类

@@ -3,7 +3,7 @@ from torch.utils.tensorboard import SummaryWriter
 from torchvision import transforms
 
 writer=SummaryWriter("../logs/transforms")
-img=Image.open("../dataset/DataSet/train/ants_image/6240329_72c01e663e.jpg")
+img=Image.open("../dataset/train/ants_image/6240329_72c01e663e.jpg")
 #print(img)
 
 #ToTensor
