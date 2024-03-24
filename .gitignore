@@ -3,3 +3,5 @@ logs/
 weights/
 .vscode/
 __pycache__/
+CatsVSDogs_code/cls_train.txt
+*.pth
